@@ -1,0 +1,46 @@
+server:
+  port: 9088
+
+spring: 
+  application:
+    name: 5Gateway
+
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://127.0.0.1:3000"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+              
+           
+      routes:
+      
+      - id: servicio11
+        uri: http://localhost:9091/productos/crearProd/**
+        predicates:
+        - Path=/admin/**
+        filters:
+        - StripPrefix=1
+        
+      - id: servicio12
+        uri: http://localhost:9091/productos/listarp/**
+        predicates:
+        - Path=/admin/**
+        filters:
+        - StripPrefix=1
+        
+      - id: servicio13
+        uri: http://localhost:9069/prod
+        predicates:
+        - Path=/dmin/**
+        filters:
+        - StripPrefix=1
+      
+    
+   
+        
+    

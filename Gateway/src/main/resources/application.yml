@@ -1,0 +1,50 @@
+server:
+  port: 9008
+
+spring: 
+  application:
+    name: Gateway
+
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://127.0.0.1:3000"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+              
+           
+      routes:
+      
+      - id: servicio1
+        uri: http://localhost:9090/usuarios/lista/**
+        predicates:
+        - Path=/usuarios2/**
+        filters:
+        - StripPrefix=1
+      
+    
+      - id: servicio7
+        uri: http://localhost:9090/usuarios/crearUsuario/**
+        predicates:
+        - Path=/usuarios3/**
+        filters:
+        - StripPrefix=1 
+        
+    
+      
+       
+      
+
+ 
+    
+
+
+
+ 
+           
+        
+           

@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Built-By: Nes
+Build-Jdk: 17.0.9
+Implementation-Title: Gateway
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.nes.gate
+Implementation-URL: https://spring.io/projects/spring-boot/wateway
+Created-By: Maven Integration for Eclipse
+
